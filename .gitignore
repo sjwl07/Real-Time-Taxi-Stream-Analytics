@@ -56,3 +56,5 @@ kafka-data/
 data/kafka/
 
 data/yellow_tripdata_2025-01.parquet
+
+checkpoints/
