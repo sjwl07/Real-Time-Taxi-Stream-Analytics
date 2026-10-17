@@ -241,6 +241,7 @@ def main():
         .when((F.col("pickup_zone") <= 0) | (F.col("dropoff_zone") <= 0), "bad_zone")
         .when((dur < 0) | (dur > int(s1["max_duration_min"])), "bad_duration")
         .when((F.col("fare_amount") < 0) | (F.col("trip_distance") < 0), "negative_value")
+        .when(F.col("trip_distance") > float(s1["max_distance_miles"]), "bad_distance")
     )
     p = parsed.withColumn("_dur", dur).withColumn("reject_reason", reason)
 

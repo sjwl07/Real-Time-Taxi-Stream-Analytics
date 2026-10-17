@@ -196,7 +196,8 @@ class Stage2State:
         ooo = behind > 0
         self.late["out_of_order"] += int(ooo.sum()); self.late["discarded"] += int(closed.sum())
         self.late["included"] += int((ooo & ~closed).sum())
-        for i in np.where(behind >= 60)[0][:max(0, 50 - len(self.late["examples"]))]:
+        delayed = pdf["is_delayed"].values.astype(bool)
+        for i in np.where((behind >= 60) & (delayed | closed))[0][:max(0, 50 - len(self.late["examples"]))]:
             self.late["examples"].append({
                 "event_id": pdf["event_id"].iloc[i], "event_time": iso(e[i]),
                 "is_delayed": bool(pdf["is_delayed"].iloc[i]), "stream_max_event_time": iso(run_max[i]),
