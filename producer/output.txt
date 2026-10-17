@@ -1,0 +1,82 @@
+
+===== DATASET SUMMARY =====
+File: ../data/yellow_tripdata_2026-01.parquet
+Rows: 3724889
+Columns: 20
+
+===== COLUMN NAMES =====
+- VendorID
+- tpep_pickup_datetime
+- tpep_dropoff_datetime
+- passenger_count
+- trip_distance
+- RatecodeID
+- store_and_fwd_flag
+- PULocationID
+- DOLocationID
+- payment_type
+- fare_amount
+- extra
+- mta_tax
+- tip_amount
+- tolls_amount
+- improvement_surcharge
+- total_amount
+- congestion_surcharge
+- Airport_fee
+- cbd_congestion_fee
+
+===== DATA TYPES =====
+VendorID                          int32
+tpep_pickup_datetime     datetime64[us]
+tpep_dropoff_datetime    datetime64[us]
+passenger_count                 float64
+trip_distance                   float64
+RatecodeID                      float64
+store_and_fwd_flag                  str
+PULocationID                      int32
+DOLocationID                      int32
+payment_type                      int64
+fare_amount                     float64
+extra                           float64
+mta_tax                         float64
+tip_amount                      float64
+tolls_amount                    float64
+improvement_surcharge           float64
+total_amount                    float64
+congestion_surcharge            float64
+Airport_fee                     float64
+cbd_congestion_fee              float64
+
+===== FIRST 5 ROWS =====
+   VendorID tpep_pickup_datetime tpep_dropoff_datetime  passenger_count  trip_distance  RatecodeID store_and_fwd_flag  PULocationID  DOLocationID  payment_type  fare_amount  extra  mta_tax  tip_amount  tolls_amount  improvement_surcharge  total_amount  congestion_surcharge  Airport_fee  cbd_congestion_fee
+0         2  2026-01-01 00:54:04   2026-01-01 00:59:37              1.0           0.97         1.0                  N           239           238             1          7.2   1.00      0.5        3.66           0.0                    1.0         15.86                   2.5          0.0                0.00
+1         1  2026-01-01 00:34:04   2026-01-01 00:39:47              0.0           0.90         1.0                  N           163           162             2          7.9   4.25      0.5        0.00           0.0                    1.0         13.65                   2.5          0.0                0.75
+2         1  2026-01-01 00:57:06   2026-01-01 01:05:59              0.0           1.40         1.0                  N            43           237             1         10.7   4.25      0.5        2.50           0.0                    1.0         18.95                   2.5          0.0                0.75
+3         2  2026-01-01 00:15:22   2026-01-01 00:58:10              4.0           5.58         1.0                  N           142           209             1         38.7   1.00      0.5       11.11           0.0                    1.0         55.56                   2.5          0.0                0.75
+4         2  2026-01-01 00:27:13   2026-01-01 00:40:43              0.0           2.16         1.0                  N            88           144             1         13.5   1.00      0.5        3.85           0.0                    1.0         23.10                   2.5          0.0                0.75
+
+===== MISSING VALUES =====
+VendorID                       0
+tpep_pickup_datetime           0
+tpep_dropoff_datetime          0
+passenger_count          1088058
+trip_distance                  0
+RatecodeID               1088058
+store_and_fwd_flag       1088058
+PULocationID                   0
+DOLocationID                   0
+payment_type                   0
+fare_amount                    0
+extra                          0
+mta_tax                        0
+tip_amount                     0
+tolls_amount                   0
+improvement_surcharge          0
+total_amount                   0
+congestion_surcharge     1088058
+Airport_fee              1088058
+cbd_congestion_fee             0
+
+===== MEMORY USAGE =====
+528.45 MiB

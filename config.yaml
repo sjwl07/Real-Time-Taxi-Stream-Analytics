@@ -1,0 +1,60 @@
+run_id: "P2-baseline"
+results_dir: "results"
+
+kafka:
+  bootstrap_servers: "localhost:9092"
+  topics:
+    raw: "taxi.raw"
+    clean: "taxi.clean"
+    metrics: "taxi.metrics"
+    lsh: "taxi.lsh"
+
+data:
+  source_file: "/home/shivam/Documents/BDA/assignment2/data/yellow_tripdata_2026-01.parquet" 
+  event_id_prefix: "2026-01"
+  start_date: "2026-01-01"      # keep trips picked up in [start, end)
+  end_date: "2026-02-01"
+  max_events: 100000            # size of the taxi segment you replay
+
+
+# ---- parameters from the assignment ----
+partitions: 4
+key_mode: "pickup_zone"         # pickup_zone (K1) | round_robin (K2)
+producer_rate: 1000             # events/second
+duplicate_rate: 0.02
+delayed_event_rate: 0.02
+max_delay_seconds: 20
+window_minutes: 60
+hll_precision: 12
+dgim_max_window: 10000
+bloom_expected_items: 200000
+bloom_false_positive_target: 0.01
+lsh_num_hashes: 100
+lsh_bands: 20
+lsh_rows_per_band: 5
+jaccard_threshold: 0.50
+
+# ---- Spark / Stage 1 ----
+spark:
+  local_slots: 4                # "parallel consumers / processing slots" -> local[N]
+  kafka_package: "org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1"
+
+stage1:
+  checkpoint_dir: "checkpoints/stage1"
+  state_buckets: 8              # Bloom state shards; keep FIXED across runs
+  max_offsets_per_trigger: 5000 # max records per micro-batch (back-pressure)
+  trigger_seconds: 1
+  max_duration_min: 360         # trips longer than this are rejected as invalid
+
+stage2:
+  checkpoint_dir: "checkpoints/stage2"
+  state_file: "checkpoints/stage2_state.pkl"
+  max_offsets_per_trigger: 5000
+  trigger_seconds: 1
+  report_interval_s: 5            # progress message every N seconds
+  allowed_lateness_min: 360       # watermark delay in EVENT-time minutes
+  reservoir_sizes: [100, 1000, 10000]
+  sample_budget_events: 1000      # per-window storage budget for event/entity sampling
+  diverse_min_destinations: 10
+  dgim_queries: [1000, 5000, 10000]
+  seed: 42

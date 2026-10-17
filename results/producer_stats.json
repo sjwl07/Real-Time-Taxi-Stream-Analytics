@@ -1,0 +1,22 @@
+{
+  "run_id": "P2-baseline",
+  "requested_rate": 1000,
+  "actual_eps": 851.62,
+  "messages_sent": 101971,
+  "delivered": 101971,
+  "delivery_errors": 0,
+  "unique_events": 100000,
+  "duplicates_sent": 1971,
+  "delayed_sent": 1950,
+  "elapsed_s": 119.74,
+  "key_mode": "pickup_zone",
+  "partition_counts": {
+    "0": 22827,
+    "1": 27320,
+    "2": 28498,
+    "3": 23326
+  },
+  "max_partition_fraction": 0.2795,
+  "start_ts_ms": 1792241095832,
+  "end_ts_ms": 1792241215570
+}

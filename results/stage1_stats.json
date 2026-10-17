@@ -1,0 +1,33 @@
+{
+  "events_in": 101971,
+  "accepted": 100796,
+  "rejected": 1175,
+  "reject_reasons": {
+    "negative_value": 1160,
+    "bad_duration": 15
+  },
+  "batches": 116,
+  "elapsed_s": 120.92,
+  "stage1_eps": 843.32,
+  "kafka_lag_taxi_raw": 0,
+  "bloom": {
+    "inserted_ids": 98848,
+    "bit_array_size": 1917016,
+    "num_hashes": 7,
+    "state_buckets": 8,
+    "expected_items": 200000,
+    "fp_target": 0.01,
+    "tp": 1948,
+    "fp": 4,
+    "tn": 98844,
+    "fn": 0,
+    "fp_rate": 4e-05,
+    "fn_rate": 0.0,
+    "fp_examples": [
+      "2026-01-row-00041121",
+      "2026-01-row-00049161",
+      "2026-01-row-00050351",
+      "2026-01-row-00055666"
+    ]
+  }
+}
