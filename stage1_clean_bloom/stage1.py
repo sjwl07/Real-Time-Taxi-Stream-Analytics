@@ -350,7 +350,7 @@ def main():
             lag = lag_from_progress(query.lastProgress)
             if lag is not None:
                 S["lag"] = lag
-            if time.time() - last_write > 5:
+            if time.time() - last_write > 1:
                 write_stats(stats_path, bloom_cfg)
                 last_write = time.time()
             if (args.idle_exit and S["last_data_ts"]

@@ -430,7 +430,7 @@ def main():
             lag = lag_from_progress(query.lastProgress)
             if lag is not None:
                 rt.lag = lag
-            if time.time() - last_write > 5:
+            if time.time() - last_write > 1:
                 write_stats()
                 last_write = time.time()
             if args.idle_exit and rt.last_data and time.time() - rt.last_data > args.idle_exit:
