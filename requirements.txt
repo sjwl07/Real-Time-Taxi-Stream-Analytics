@@ -5,3 +5,4 @@ pyarrow==16.1.0
 setuptools
 confluent-kafka
 pyyaml
+datasketch
