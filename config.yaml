@@ -45,6 +45,7 @@ stage1:
   max_offsets_per_trigger: 5000 # max records per micro-batch (back-pressure)
   trigger_seconds: 1
   max_duration_min: 360         # trips longer than this are rejected as invalid
+  max_distance_miles: 200
 
 stage2:
   checkpoint_dir: "checkpoints/stage2"
@@ -58,3 +59,13 @@ stage2:
   diverse_min_destinations: 10
   dgim_queries: [1000, 5000, 10000]
   seed: 42
+
+stage3:
+  checkpoint_dir: "checkpoints/stage3"
+  state_file: "checkpoints/stage3_state.pkl"
+  max_offsets_per_trigger: 5000
+  trigger_seconds: 1
+  allowed_lateness_min: 360
+  min_trips: 20
+  minhash_seed: 1
+  lsh_configs: [[20, 5], [25, 4], [10, 10]]   # [bands, rows]; bands*rows must equal lsh_num_hashes; first = default
